@@ -1,3 +1,2 @@
 # main
-print("Baguette")
-print("French")
+print("Hello World")
