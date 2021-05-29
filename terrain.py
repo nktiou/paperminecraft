@@ -4,7 +4,7 @@ pygame.init()
 WORLD_LENGTH = 20
 WORLD_HEIGHT = 15
 SEA_LEVEL = 24
-MEAN_HEIGHT = 8
+MEAN_HEIGHT = 9
 
 PLAINS = random.randint(-1,1)
 
@@ -27,16 +27,16 @@ class worldGenerator():
         self.biome = biome
 # 0 = air, 1 = dirt, 2 = grass, 3 = stone
     def generate():
+        RANDOM_HEIGHT = MEAN_HEIGHT + random.randint(-2,2)
         for x in range(WORLD_LENGTH):
             for y in range(WORLD_HEIGHT):
-                ROW_HEIGHT = MEAN_HEIGHT + PLAINS
-                if y < ROW_HEIGHT:
-                    world[x][y] = 0
-                elif y - 1 < ROW_HEIGHT:
+                pass
+            for i in range(RANDOM_HEIGHT):
+                if i - 1 <= RANDOM_HEIGHT:
                     world[x][y] = 2
-                elif y - 2 < ROW_HEIGHT:
+                elif i -2 <= RANDOM_HEIGHT:
                     world[x][y] = 1
-                elif y > ROW_HEIGHT:
+                else:
                     world[x][y] = 3
 
     def draw():
