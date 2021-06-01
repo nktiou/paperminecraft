@@ -1,14 +1,14 @@
 import pygame, random, numpy as np
 pygame.init()
 
-WORLD_LENGTH = 20
-WORLD_HEIGHT = 15
-SEA_LEVEL = 24
-MEAN_HEIGHT = 9
+WORLD_LENGTH = 24
+WORLD_HEIGHT = 16
+SEA_LEVEL = 25
+MEAN_HEIGHT = 7
 
 PLAINS = random.randint(-1,1)
 
-game = pygame.display.set_mode((960,720))
+game = pygame.display.set_mode((WORLD_LENGTH*48,WORLD_HEIGHT*48))
 pygame.display.set_caption("Discount Minecraft")
 clock = pygame.time.Clock()
 
@@ -17,27 +17,27 @@ dirt = pygame.image.load('assets/dirt.png')
 dirt_grass = pygame.image.load('assets/dirt_grass.png')
 stone = pygame.image.load('assets/stone.png')
 
-world = [[0]*WORLD_HEIGHT]*WORLD_LENGTH
+world = np.zeros((WORLD_LENGTH,WORLD_HEIGHT))
+#world = [[0]*WORLD_HEIGHT]*WORLD_LENGTH
 
 class worldGenerator():
-    def __init__(self, x, y, block, biome):
-        self.x = x
-        self.y = y
-        self.block = block
-        self.biome = biome
+    def __init__(self):
+        pass
 # 0 = air, 1 = dirt, 2 = grass, 3 = stone
     def generate():
-        RANDOM_HEIGHT = MEAN_HEIGHT + random.randint(-2,2)
+        RANDOM_HEIGHT = MEAN_HEIGHT
         for x in range(WORLD_LENGTH):
-            for y in range(WORLD_HEIGHT):
-                pass
-            for i in range(RANDOM_HEIGHT):
-                if i - 1 <= RANDOM_HEIGHT:
+            RANDOM_HEIGHT += random.randint(-1,1)
+            for y in range(RANDOM_HEIGHT, WORLD_HEIGHT):
+                if y == RANDOM_HEIGHT:
                     world[x][y] = 2
-                elif i -2 <= RANDOM_HEIGHT:
+                elif y - 2 < RANDOM_HEIGHT:
                     world[x][y] = 1
                 else:
                     world[x][y] = 3
+
+    def generateOre():
+        pass
 
     def draw():
         for x in range(WORLD_LENGTH):
