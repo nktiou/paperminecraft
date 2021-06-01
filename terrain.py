@@ -25,13 +25,14 @@ class worldGenerator():
         pass
 # 0 = air, 1 = dirt, 2 = grass, 3 = stone
     def generate():
-        RANDOM_HEIGHT = MEAN_HEIGHT
+        RandomHeight = MEAN_HEIGHT
         for x in range(WORLD_LENGTH):
-            RANDOM_HEIGHT += random.randint(-1,1)
-            for y in range(RANDOM_HEIGHT, WORLD_HEIGHT):
-                if y == RANDOM_HEIGHT:
+            RandomHeight += random.randint(-1,1)
+            DirtHeight = random.randint(3,4)
+            for y in range(RandomHeight, WORLD_HEIGHT):
+                if y == RandomHeight:
                     world[x][y] = 2
-                elif y - 2 < RANDOM_HEIGHT:
+                elif y - DirtHeight < RandomHeight:
                     world[x][y] = 1
                 else:
                     world[x][y] = 3
